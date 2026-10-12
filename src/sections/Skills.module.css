@@ -1,0 +1,36 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.label {
+  font-size: var(--fs-base);
+  color: var(--color-accent);
+}
+
+@media print {
+  .grid {
+    display: block;
+  }
+
+  .group {
+    display: block;
+    margin-bottom: 4pt;
+  }
+
+  .label {
+    display: inline;
+    font-size: 11pt;
+  }
+
+  .label::after {
+    content: ' : ';
+  }
+}

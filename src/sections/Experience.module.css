@@ -1,0 +1,77 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--space-4);
+  border-left: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Pastille sur la ligne de temps */
+.item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-4) - 7px);
+  top: var(--space-4);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-bg);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+}
+
+.role {
+  font-size: var(--fs-lg);
+}
+
+.company {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.meta {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.highlights {
+  padding-left: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+@media print {
+  .timeline {
+    border: none;
+    padding: 0;
+    gap: 10pt;
+  }
+
+  .item {
+    gap: 4pt;
+    break-inside: avoid;
+  }
+
+  .item::before {
+    display: none;
+  }
+
+  .role {
+    font-size: 12pt;
+  }
+}

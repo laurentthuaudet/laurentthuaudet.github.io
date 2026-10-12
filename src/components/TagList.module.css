@@ -1,0 +1,30 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  font-size: var(--fs-sm);
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+@media print {
+  .list {
+    display: inline;
+  }
+
+  .tag {
+    display: inline;
+    border: none;
+    padding: 0;
+  }
+
+  .tag:not(:last-child)::after {
+    content: ' · ';
+  }
+}
