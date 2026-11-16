@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <>
-      {/* Sans WebGL, le fond CSS de la page suffit : le CV reste entièrement lisible. */}
+      {/* Sans WebGL, le fond uni de la page suffit : le CV reste entièrement lisible. */}
       {webgl && (
         <Suspense fallback={null}>
           <Scene still={reducedMotion} />
@@ -31,7 +31,7 @@ export default function App() {
         <About />
         <Experience />
         <Skills />
-        <Projects />
+        {cv.projects.length > 0 && <Projects />}
         <Contact />
       </main>
       <footer className={`${styles.footer} no-print`}>

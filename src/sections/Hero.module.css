@@ -1,88 +1,146 @@
+/* Le héros laisse voir la surface de l'eau ; le texte est posé sur un aplat abyss. */
 .hero {
   min-height: calc(100svh - var(--header-height));
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: var(--space-6) var(--space-3);
+  padding: var(--space-16) var(--space-4) var(--space-8);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: var(--space-6);
+}
+
+.panel {
+  max-width: 640px;
+  padding: var(--space-8);
+  background: var(--abyss);
+  color: var(--on-abyss);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
   gap: var(--space-3);
 }
 
 .kicker {
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--glow);
 }
 
+/* Style display Caretta : un seul par écran. */
 .name {
-  font-size: var(--fs-hero);
+  font-size: clamp(40px, 8vw, 56px);
+  line-height: 1.07;
   letter-spacing: -0.02em;
 }
 
 .tagline {
-  font-size: var(--fs-lg);
-  color: var(--color-text-muted);
-  max-width: 36ch;
+  font-size: 18px;
+  line-height: 26px;
 }
 
 .location {
-  font-size: var(--fs-sm);
-  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--on-abyss-muted);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 .primary,
 .secondary {
   font: inherit;
   font-weight: 600;
-  padding: var(--space-2) var(--space-4);
-  border-radius: 999px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
   cursor: pointer;
+  text-decoration: none;
   transition:
-    transform var(--transition),
-    background var(--transition);
+    background var(--transition),
+    color var(--transition);
 }
 
+/* Sur abyss, l'action principale prend glow (lagoon y manquerait de contraste). */
 .primary {
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
+  background: var(--glow);
+  color: #0e2a33;
   border: 1px solid transparent;
 }
 
-.secondary {
-  background: var(--color-surface);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+.primary:hover {
+  background: #a3e2d7;
 }
 
-.primary:hover,
+.secondary {
+  background: transparent;
+  color: var(--on-abyss);
+  border: 1px solid var(--on-abyss-muted);
+}
+
 .secondary:hover {
-  transform: translateY(-2px);
-  text-decoration: none;
+  border-color: var(--glow);
+  color: var(--glow);
+}
+
+.panel :focus-visible {
+  outline-color: var(--glow);
+}
+
+.hint {
+  align-self: center;
+  font-size: 14px;
+  color: var(--on-abyss);
+  background: var(--abyss);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-pill);
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 720px) {
+  .panel {
+    padding: var(--space-6) var(--space-4);
+  }
 }
 
 @media print {
   .hero {
     min-height: auto;
-    padding: 0 0 12pt;
-    gap: 4pt;
+    padding: 0 0 8pt;
+  }
+
+  .panel {
+    padding: 0;
+    background: none;
+    color: var(--ink);
+    box-shadow: none;
+    gap: 2pt;
+    max-width: none;
+  }
+
+  .kicker {
+    color: var(--lagoon);
   }
 
   .name {
-    font-size: 26pt;
+    font-size: 24pt;
   }
 
   .tagline {
-    font-size: 12pt;
-    max-width: none;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .location {
+    color: var(--ink-muted);
   }
 }

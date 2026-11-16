@@ -1,49 +1,85 @@
+/*
+ * Jetons du système de design Caretta (tokens.json), transcrits en variables CSS.
+ * Source : https://claude.ai/artifact/MBaTfUijV8M7MX3a4yhCPf — mettre à jour ici si Caretta évolue.
+ * Thème par défaut : « Clair — Surface » ; « Sombre — Profondeur » suit le réglage du système.
+ */
 :root {
-  color-scheme: dark light;
+  color-scheme: light dark;
 
-  /* Couleurs (thème sombre par défaut) */
-  --color-bg: #0b0d14;
-  --color-surface: rgb(20 24 36 / 0.72);
-  --color-border: rgb(255 255 255 / 0.1);
-  --color-text: #e8eaf2;
-  --color-text-muted: #9aa1b5;
-  --color-accent: #7c9cff;
-  --color-accent-2: #c18cff;
-  --color-accent-contrast: #0b0d14;
+  /* Couleurs — Clair — Surface */
+  --surface: #f5f3ec;
+  --surface-raised: #ffffff;
+  --surface-sunken: #e9e5d9;
+  --ink: #0e2a33;
+  --ink-muted: #4d646b;
+  --hairline: #d6d2c4;
+  --lagoon: #1f6378;
+  --on-lagoon: #ffffff;
+  --abyss: #0e2a33;
+  --shallows: #cfe9e4;
+  --glow: #7fd3c4;
+  --carapace: #6b6a2a;
+  --caouanne: #9a4f22;
+  --focus: var(--lagoon);
+  --danger: #b3261e;
+  --success: #2e6b3c;
+  --warning: #8a5a00;
+
+  /* Texte posé sur abyss (règle Caretta : blanc ou glow) */
+  --on-abyss: #ffffff;
+  --on-abyss-muted: #9db4b9;
 
   /* Typographie */
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Space Grotesk', var(--font-sans);
-  --fs-sm: 0.875rem;
-  --fs-base: 1rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: clamp(1.75rem, 4vw, 2.5rem);
-  --fs-hero: clamp(2.5rem, 8vw, 5rem);
+  --font-display: Fraunces, Georgia, serif;
+  --font-sans: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Espacements & formes */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 1.5rem;
-  --space-5: 2.5rem;
-  --space-6: 4rem;
-  --radius: 14px;
-  --content-width: 960px;
-  --header-height: 64px;
+  /* Espacement (grille de 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
 
-  --blur: blur(12px);
+  /* Formes */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(14, 42, 51, 0.08);
+  --shadow-lg: 0 12px 32px rgba(14, 42, 51, 0.14);
+
+  /* Propres au site */
+  --content-width: 920px;
+  --header-height: 60px;
   --transition: 200ms ease;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #f5f6fb;
-    --color-surface: rgb(255 255 255 / 0.78);
-    --color-border: rgb(15 20 40 / 0.1);
-    --color-text: #141826;
-    --color-text-muted: #545b70;
-    --color-accent: #3b5bdb;
-    --color-accent-2: #8a3ffc;
-    --color-accent-contrast: #ffffff;
+    /* Couleurs — Sombre — Profondeur */
+    --surface: #0b1e26;
+    --surface-raised: #12303b;
+    --surface-sunken: #071820;
+    --ink: #e8f0ef;
+    --ink-muted: #9db4b9;
+    --hairline: #234450;
+    --lagoon: #5fb3c7;
+    --on-lagoon: #06202a;
+    --abyss: #163e4b;
+    --shallows: #17414a;
+    --glow: #7fd3c4;
+    --carapace: #b0ac52;
+    --caouanne: #e0925e;
+    --focus: var(--glow);
+    --danger: #f2918a;
+    --success: #82c995;
+    --warning: #e6b85c;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
   }
 }

@@ -8,24 +8,37 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
 }
 
+/* Styles de texte Caretta : body */
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--surface);
+  color: var(--ink);
   font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 24px;
   -webkit-font-smoothing: antialiased;
 }
 
+/* display / h1 / h2 : Fraunces ; h3 : Instrument Sans */
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-display);
-  line-height: 1.15;
+  font-weight: 500;
+  margin: 0;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 32px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -34,23 +47,29 @@ p {
 }
 
 a {
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  color: var(--lagoon);
+  text-underline-offset: 3px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
+}
+
+/* Style de texte Caretta : label (capitales, interlettrage) */
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .visually-hidden {
@@ -76,27 +95,25 @@ ul {
 }
 
 @media print {
+  /* Impression : toujours le thème clair, sans ombres. */
   :root {
-    --color-bg: #fff;
-    --color-surface: #fff;
-    --color-border: #ddd;
-    --color-text: #111;
-    --color-text-muted: #444;
-    --color-accent: #1a3fb0;
-    --font-sans: Georgia, 'Times New Roman', serif;
+    --surface: #fff;
+    --surface-raised: #fff;
+    --ink: #0e2a33;
+    --ink-muted: #4d646b;
+    --hairline: #d6d2c4;
+    --lagoon: #1f6378;
+    --shallows: #fff;
+    --shadow-sm: none;
+    --shadow-lg: none;
   }
 
   body {
-    font-size: 11pt;
+    font-size: 10.5pt;
+    line-height: 1.45;
   }
 
   .no-print {
     display: none !important;
-  }
-
-  a[href^='http']::after {
-    content: ' (' attr(href) ')';
-    font-size: 0.85em;
-    color: var(--color-text-muted);
   }
 }

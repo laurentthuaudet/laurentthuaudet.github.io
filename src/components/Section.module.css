@@ -1,29 +1,38 @@
+/*
+ * Chaque section est un panneau opaque : le texte ne se pose jamais directement
+ * sur la scène 3D (règle Caretta). L'espace entre panneaux laisse voir la plongée.
+ */
 .section {
   max-width: var(--content-width);
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-3);
+  margin: 40vh auto 0;
+  padding: var(--space-8);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .title {
-  font-size: var(--fs-xl);
-  margin-bottom: var(--space-5);
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  width: fit-content;
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 720px) {
+  .section {
+    margin: 30vh var(--space-4) 0;
+    padding: var(--space-6) var(--space-4);
+  }
 }
 
 @media print {
   .section {
-    padding: 12pt 0;
-    break-inside: avoid-page;
+    margin: 0;
+    padding: 10pt 0 0;
+    border-radius: 0;
   }
 
   .title {
-    font-size: 16pt;
-    margin-bottom: 8pt;
-    background: none;
-    color: var(--color-accent);
+    font-size: 15pt;
+    line-height: 1.2;
+    margin-bottom: 6pt;
+    color: var(--lagoon);
   }
 }

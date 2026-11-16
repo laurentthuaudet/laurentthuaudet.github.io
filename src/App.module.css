@@ -1,6 +1,11 @@
+/* Pied de page posé sur le fond marin : aplat abyss. */
 .footer {
-  text-align: center;
-  padding: var(--space-5) var(--space-3);
-  font-size: var(--fs-sm);
-  color: var(--color-text-muted);
+  width: fit-content;
+  margin: 40vh auto var(--space-16);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--abyss);
+  color: var(--on-abyss-muted);
+  font-size: 14px;
+  line-height: 20px;
 }

@@ -10,7 +10,7 @@ export function Projects() {
       <ul className={styles.grid}>
         {cv.projects.map((project) => (
           <li key={project.name} className={`${card.card} ${styles.project}`}>
-            <h3 className={styles.name}>{project.name}</h3>
+            <h3>{project.name}</h3>
             <p className={styles.description}>{project.description}</p>
             <TagList tags={project.stack} label="Technologies" />
             {(project.url || project.repo) && (

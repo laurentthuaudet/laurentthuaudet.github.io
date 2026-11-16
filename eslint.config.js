@@ -10,4 +10,10 @@ export default tseslint.config(
     extends: [js.configs.recommended, ...tseslint.configs.recommended, reactHooks.configs.flat.recommended],
     languageOptions: { ecmaVersion: 2022, globals: globals.browser },
   },
+  {
+    // R3F : les objets three.js (géométries, couleurs, uniforms) sont mutés dans useFrame
+    // plutôt que recréés à chaque frame. C'est l'idiome voulu, pas un état React.
+    files: ['src/scene/**/*.{ts,tsx}'],
+    rules: { 'react-hooks/immutability': 'off' },
+  },
 );

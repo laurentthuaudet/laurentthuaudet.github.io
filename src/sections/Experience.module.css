@@ -1,11 +1,11 @@
 .timeline {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--space-4);
-  border-left: 2px solid var(--color-border);
+  padding: 0 0 0 var(--space-6);
+  border-left: 2px solid var(--hairline);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-6);
 }
 
 .item {
@@ -15,55 +15,74 @@
   gap: var(--space-3);
 }
 
-/* Pastille sur la ligne de temps */
+/* Repère sur la ligne de temps */
 .item::before {
   content: '';
   position: absolute;
-  left: calc(-1 * var(--space-4) - 7px);
-  top: var(--space-4);
+  left: calc(-1 * var(--space-6) - 8px);
+  top: var(--space-6);
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 4px var(--color-bg);
+  border-radius: var(--radius-pill);
+  background: var(--lagoon);
+  box-shadow: 0 0 0 4px var(--surface);
 }
 
 .head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-1) var(--space-3);
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
-.role {
-  font-size: var(--fs-lg);
+/* Style code Caretta pour les dates */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink-muted);
 }
 
 .company {
-  color: var(--color-accent);
-  font-weight: 500;
-}
-
-.meta {
-  font-size: var(--fs-sm);
-  color: var(--color-text-muted);
+  color: var(--lagoon);
 }
 
 .highlights {
-  padding-left: var(--space-4);
-  color: var(--color-text-muted);
+  padding-left: var(--space-6);
+}
+
+.highlights li + li {
+  margin-top: var(--space-1);
+}
+
+.clients {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.clients .label {
+  color: var(--ink-muted);
+  margin-right: var(--space-2);
+}
+
+@media (max-width: 720px) {
+  .timeline {
+    padding-left: var(--space-4);
+  }
+
+  .item::before {
+    left: calc(-1 * var(--space-4) - 8px);
+  }
 }
 
 @media print {
   .timeline {
     border: none;
     padding: 0;
-    gap: 10pt;
+    gap: 8pt;
   }
 
   .item {
-    gap: 4pt;
+    gap: 3pt;
     break-inside: avoid;
   }
 
@@ -71,7 +90,7 @@
     display: none;
   }
 
-  .role {
-    font-size: 12pt;
+  .meta {
+    font-size: 9pt;
   }
 }

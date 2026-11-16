@@ -1,6 +1,8 @@
 import styles from './TagList.module.css';
 
 export function TagList({ tags, label }: { tags: string[]; label: string }) {
+  if (tags.length === 0) return null;
+
   return (
     <ul className={styles.list} aria-label={label}>
       {tags.map((tag) => (

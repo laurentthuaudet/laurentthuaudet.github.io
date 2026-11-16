@@ -6,6 +6,8 @@ export interface RigInput {
   /** Position du pointeur normalisée de -1 à 1 sur chaque axe. */
   pointerX: number;
   pointerY: number;
+  /** Instant (performance.now) du dernier mouvement du pointeur. */
+  pointerMovedAt: number;
 }
 
 /**
@@ -15,7 +17,7 @@ export interface RigInput {
  * Retourne une ref (pas de re-render) lue à chaque frame dans `useFrame`.
  */
 export function useScrollRig() {
-  const input = useRef<RigInput>({ scroll: 0, pointerX: 0, pointerY: 0 });
+  const input = useRef<RigInput>({ scroll: 0, pointerX: 0, pointerY: 0, pointerMovedAt: -Infinity });
 
   useEffect(() => {
     const onScroll = () => {
@@ -25,6 +27,7 @@ export function useScrollRig() {
     const onPointer = (e: PointerEvent) => {
       input.current.pointerX = (e.clientX / window.innerWidth) * 2 - 1;
       input.current.pointerY = -((e.clientY / window.innerHeight) * 2 - 1);
+      input.current.pointerMovedAt = performance.now();
     };
 
     onScroll();
