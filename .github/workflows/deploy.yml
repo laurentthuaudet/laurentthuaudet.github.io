@@ -28,9 +28,8 @@ jobs:
       - run: pnpm lint
       - run: pnpm build
         env:
-          # Site servi sous https://<user>.github.io/<repo>/.
-          # Pour un repo nommé <user>.github.io, remplacer par '/'.
-          BASE_PATH: /${{ github.event.repository.name }}/
+          # Repo <user>.github.io : site servi à la racine ; sinon sous /<repo>/.
+          BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
